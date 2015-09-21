@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-part of quiver.testing.async;
+part of quiver.async.testing;
 
 /// A mechanism to make time-dependent units testable.
 ///
