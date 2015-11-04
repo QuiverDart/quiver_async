@@ -11,7 +11,7 @@ set -e
 echo "Running dartanalyzer..."
 libs=$(find lib -maxdepth 1 -type f -name '*.dart')
 testing_libs=$(find lib/testing -maxdepth 1 -type f -name '*.dart')
-dartanalyzer $DARTANALYZER_FLAGS $libs $testing_libs test/all_tests.dart
+dartanalyzer $DARTANALYZER_FLAGS $libs $testing_libs
 
 # Run the tests.
 echo "Running tests..."
