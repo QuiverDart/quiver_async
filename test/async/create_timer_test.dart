@@ -15,7 +15,7 @@
 library quiver.async.create_timer_test;
 
 import 'package:test/test.dart';
-import 'package:quiver/async.dart';
+import 'package:quiver_async/async.dart';
 
 main() {
   group('createTimer', () {

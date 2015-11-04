@@ -15,7 +15,7 @@
 library quiver.async.countdown_timer_test;
 
 import 'package:test/test.dart';
-import 'package:quiver/async.dart';
+import 'package:quiver_async/async.dart';
 import 'package:quiver/time.dart';
 import 'package:quiver/testing/async.dart';
 import 'package:quiver/testing/time.dart';

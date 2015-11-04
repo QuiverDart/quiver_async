@@ -25,7 +25,7 @@ part of quiver.async;
  *
  * Example:
  *   import 'dart:html';
- *   import 'package:quiver/async.dart';
+ *   import 'package:quiver_async/async.dart';
  *
  *   var router = new StreamRouter(window.onClick);
  *   var onRightClick = router.route((e) => e.button == 2);
