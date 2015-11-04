@@ -25,5 +25,5 @@ if [ "$REPO_TOKEN" ] && [ "$TRAVIS_DART_VERSION" = "stable" ]; then
     --token $REPO_TOKEN \
     --retry 2 \
     --exclude-test-files \
-    test/all_tests.dart
+    $testing_libs
 fi
