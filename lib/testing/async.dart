@@ -12,9 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Testing support for dart:async.
- */
+/// Testing support for dart:async.
 library quiver.async.testing;
 
 import 'dart:async';
