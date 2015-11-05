@@ -10,7 +10,7 @@ Utilities for working with Futures, Streams and async computations.
 
 [API Docs](http://www.dartdocs.org/documentation/quiver_async/latest) are available.
 
-# Main Libraries
+## Main Libraries
 
 `FutureGroup` is collection of Futures that signals when all its child futures
 have completed. Allows adding new Futures as long as it hasn't completed yet.
@@ -38,7 +38,7 @@ code that depends on Timer.
 a simple, tracking periodic stream of `DateTime` events with optional anchor
 time.
 
-# Testing Libraries
+## Testing Libraries
 
 `FakeAsync` enables testing of units which depend upon timers and microtasks.
 It supports fake advancements of time and the microtask queue, which cause fake
