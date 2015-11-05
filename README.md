@@ -10,14 +10,6 @@ Utilities for working with Futures, Streams and async computations.
 
 [API Docs](http://www.dartdocs.org/documentation/quiver_async/latest) are available.
 
-## Installation
-
-Add `quiver_async` to your project's pubspec.yaml file and run `pub get`.
-We recommend the following version constraint:
-
-    dependencies:
-      quiver_async: '>=1.0.0 <2.0.0'
-
 # Main Libraries
 
 `FutureGroup` is collection of Futures that signals when all its child futures
