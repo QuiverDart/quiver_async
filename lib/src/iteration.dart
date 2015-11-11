@@ -31,8 +31,8 @@ typedef Future<T> AsyncCombiner<T>(T previous, e);
 Future doWhileAsync(Iterable iterable, AsyncAction<bool> action) =>
     _doWhileAsync(iterable.iterator, action);
 
-Future _doWhileAsync(
-    Iterator iterator, AsyncAction<bool> action) => (iterator.moveNext())
+Future _doWhileAsync(Iterator iterator, AsyncAction<bool> action) => (iterator
+        .moveNext())
     ? action(iterator.current).then((bool result) =>
         (result) ? _doWhileAsync(iterator, action) : new Future.value(false))
     : new Future.value(true);

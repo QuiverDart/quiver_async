@@ -104,7 +104,8 @@ abstract class FakeAsync {
   /// [timeout] lets you set the maximum amount of time the flushing will take.
   /// Throws a [StateError] if the [timeout] is exceeded. The default timeout
   /// is 1 hour. [timeout] is relative to the elapsed time.
-  void flushTimers({Duration timeout: const Duration(hours: 1),
+  void flushTimers(
+      {Duration timeout: const Duration(hours: 1),
       bool flushPeriodicTimers: true});
 
   /// The number of created periodic timers that have not been canceled.
@@ -162,7 +163,8 @@ class _FakeAsync extends FakeAsync {
   }
 
   @override
-  void flushTimers({Duration timeout: const Duration(hours: 1),
+  void flushTimers(
+      {Duration timeout: const Duration(hours: 1),
       bool flushPeriodicTimers: true}) {
     final absoluteTimeout = _elapsed + timeout;
     _drainTimersWhile((_FakeTimer timer) {
@@ -186,6 +188,7 @@ class _FakeAsync extends FakeAsync {
     }
     return _zone.runGuarded(() => callback(this));
   }
+
   Zone _zone;
 
   @override
@@ -200,13 +203,14 @@ class _FakeAsync extends FakeAsync {
   int get microtaskCount => _microtasks.length;
 
   ZoneSpecification get _zoneSpec => new ZoneSpecification(
-      createTimer: (_, __, ___, Duration duration, Function callback) {
-    return _createTimer(duration, callback, false);
-  }, createPeriodicTimer: (_, __, ___, Duration duration, Function callback) {
-    return _createTimer(duration, callback, true);
-  }, scheduleMicrotask: (_, __, ___, Function microtask) {
-    _microtasks.add(microtask);
-  });
+          createTimer: (_, __, ___, Duration duration, Function callback) {
+        return _createTimer(duration, callback, false);
+      }, createPeriodicTimer:
+              (_, __, ___, Duration duration, Function callback) {
+        return _createTimer(duration, callback, true);
+      }, scheduleMicrotask: (_, __, ___, Function microtask) {
+        _microtasks.add(microtask);
+      });
 
   _drainTimersWhile(bool predicate(_FakeTimer)) {
     _drainMicrotasks();
