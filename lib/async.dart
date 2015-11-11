@@ -26,25 +26,17 @@ part 'src/iteration.dart';
 part 'src/metronome.dart';
 part 'src/stream_router.dart';
 
-/**
- * The signature of a one-shot [Timer] factory.
- */
+/// The signature of a one-shot [Timer] factory.
 typedef Timer CreateTimer(Duration duration, void callback());
 
-/**
- * Creates a new one-shot [Timer] using `new Timer(duration, callback)`.
- */
+/// Creates a new one-shot [Timer] using `new Timer(duration, callback)`.
 Timer createTimer(Duration duration, void callback()) =>
     new Timer(duration, callback);
 
-/**
- * The signature of a periodic timer factory.
- */
+/// The signature of a periodic timer factory.
 typedef Timer CreateTimerPeriodic(Duration duration, void callback(Timer));
 
-/**
- * Creates a new periodic [Timer] using
- * `new Timer.periodic(duration, callback)`.
- */
+/// Creates a new periodic [Timer] using
+/// `new Timer.periodic(duration, callback)`.
 Timer createTimerPeriodic(Duration duration, void callback(Timer)) =>
     new Timer.periodic(duration, callback);
