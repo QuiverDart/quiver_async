@@ -8,7 +8,7 @@ Utilities for working with Futures, Streams and async computations.
 
 ## Documentation
 
-[API Docs](http://www.dartdocs.org/documentation/quiver_async/latest) are available.
+[API Docs](http://www.dartdocs.org/documentation/quiver_async/latest)
 
 ## Main Libraries
 
