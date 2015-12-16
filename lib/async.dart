@@ -16,8 +16,8 @@ library quiver.async;
 
 import 'dart:async';
 
-// TODO: switch to 'package:quiver_time/time.dart'
-import 'package:quiver/time.dart';
+import 'package:quiver_clock/clock.dart';
+import 'package:quiver_time/time_unit.dart';
 
 part 'src/countdown_timer.dart';
 part 'src/future_group.dart';

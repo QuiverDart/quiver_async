@@ -14,9 +14,10 @@
 
 library quiver.time.clock_test;
 
-import 'package:quiver/testing/async.dart';
 import 'package:quiver_async/async.dart';
-import 'package:quiver/time.dart';
+import 'package:quiver_async/testing/async.dart';
+import 'package:quiver_clock/clock.dart';
+import 'package:quiver_time/time_unit.dart';
 import 'package:test/test.dart';
 
 main() {
