@@ -19,7 +19,7 @@ import 'dart:async';
 import 'dart:collection';
 
 import 'package:quiver_iterables/iterables.dart';
-import 'package:quiver_clock/clock.dart';
+import 'package:quiver_time/clock.dart';
 import 'package:quiver_time/time_unit.dart';
 
 part 'src/fake_async.dart';
