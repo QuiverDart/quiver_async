@@ -248,8 +248,8 @@ class _FakeAsync extends FakeAsync {
       timer._callback(timer);
       timer._nextCall += timer._duration;
     } else {
-      timer._callback();
       _timers.remove(timer);
+      timer._callback();
     }
   }
 
