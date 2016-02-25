@@ -618,7 +618,6 @@ main() {
               reason: "is not active after executing callback");
         });
       });
-      ;
     });
   });
 }
