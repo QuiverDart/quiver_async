@@ -601,5 +601,26 @@ main() {
         });
       });
     });
+
+    group('timers', () {
+      test('should behave like real timers', () {
+        return new FakeAsync().run((async) {
+          var timeout = const Duration(minutes: 1);
+          int counter = 0;
+          var timer;
+          timer = new Timer(timeout, () {
+            counter++;
+            expect(timer.isActive, isFalse,
+                reason: "is not active while executing callback");
+          });
+          expect(timer.isActive, isTrue,
+              reason: "is active before executing callback");
+          async.elapse(timeout);
+          expect(counter, equals(1), reason: "timer executed");
+          expect(timer.isActive, isFalse,
+              reason: "is not active after executing callback");
+        });
+      });
+    });
   });
 }
