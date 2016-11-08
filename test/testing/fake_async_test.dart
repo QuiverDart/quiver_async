@@ -212,6 +212,7 @@ main() {
                 scheduleMicrotask(() => microtaskCalls++);
               }
             }
+
             scheduleMicrotasks();
             new Timer.periodic(elapseBy ~/ 5, (_) {
               timerCalls++;
@@ -412,7 +413,7 @@ main() {
           new Future(() {
             log.add(2);
           });
-          new Timer.periodic(new Duration(seconds: 1), (_) {
+          new Timer.periodic(const Duration(seconds: 1), (_) {
             log.add(2);
           });
           async.flushMicrotasks();
@@ -446,10 +447,10 @@ main() {
           'scheduled first', () {
         new FakeAsync().run((async) {
           final log = [];
-          new Future.delayed(new Duration(seconds: 2), () {
+          new Future.delayed(const Duration(seconds: 2), () {
             log.add('delayed');
           });
-          new Timer.periodic(new Duration(seconds: 1), (_) {
+          new Timer.periodic(const Duration(seconds: 1), (_) {
             log.add('periodic');
           });
           expect(log, hasLength(0), reason: 'should not flush until asked to');
@@ -463,10 +464,10 @@ main() {
           'if scheduled first', () {
         new FakeAsync().run((async) {
           final log = [];
-          new Timer.periodic(new Duration(seconds: 1), (_) {
+          new Timer.periodic(const Duration(seconds: 1), (_) {
             log.add('periodic');
           });
-          new Future.delayed(new Duration(seconds: 2), () {
+          new Future.delayed(const Duration(seconds: 2), () {
             log.add('delayed');
           });
           expect(log, hasLength(0), reason: 'should not flush until asked to');
@@ -494,15 +495,17 @@ main() {
         new FakeAsync().run((async) {
           int count = 0;
           createTimer() {
-            new Future.delayed(new Duration(minutes: 30), () {
+            new Future.delayed(const Duration(minutes: 30), () {
               count++;
               createTimer();
             });
           }
+
           createTimer();
           expect(
               () => async.flushTimers(
-                  timeout: new Duration(hours: 2), flushPeriodicTimers: false),
+                  timeout: const Duration(hours: 2),
+                  flushPeriodicTimers: false),
               throwsStateError);
           expect(count, 4);
         });
@@ -511,10 +514,10 @@ main() {
       test('should timeout periodic timers', () {
         new FakeAsync().run((async) {
           int count = 0;
-          new Timer.periodic(new Duration(minutes: 30), (Timer timer) {
+          new Timer.periodic(const Duration(minutes: 30), (Timer timer) {
             count++;
           });
-          expect(() => async.flushTimers(timeout: new Duration(hours: 1)),
+          expect(() => async.flushTimers(timeout: const Duration(hours: 1)),
               throwsStateError);
           expect(count, 2);
         });
@@ -523,13 +526,13 @@ main() {
       test('should flush periodic timers', () {
         new FakeAsync().run((async) {
           int count = 0;
-          new Timer.periodic(new Duration(minutes: 30), (Timer timer) {
+          new Timer.periodic(const Duration(minutes: 30), (Timer timer) {
             if (count == 3) {
               timer.cancel();
             }
             count++;
           });
-          async.flushTimers(timeout: new Duration(hours: 20));
+          async.flushTimers(timeout: const Duration(hours: 20));
           expect(count, 4);
         });
       });
@@ -539,7 +542,7 @@ main() {
           final log = [];
           int count = 0;
           createTimer() {
-            new Future.delayed(new Duration(minutes: 30), () {
+            new Future.delayed(const Duration(minutes: 30), () {
               log.add(count);
               count++;
               if (count < 4) {
@@ -547,9 +550,10 @@ main() {
               }
             });
           }
+
           createTimer();
-          async.elapse(new Duration(hours: 1));
-          async.flushTimers(timeout: new Duration(hours: 1));
+          async.elapse(const Duration(hours: 1));
+          async.flushTimers(timeout: const Duration(hours: 1));
           expect(count, 4);
         });
       });
@@ -572,11 +576,11 @@ main() {
         new FakeAsync().run((async) {
           expect(async.periodicTimerCount, 0);
           Timer timer =
-              new Timer.periodic(new Duration(minutes: 30), (Timer timer) {});
+              new Timer.periodic(const Duration(minutes: 30), (Timer timer) {});
           expect(async.periodicTimerCount, 1);
-          new Timer.periodic(new Duration(minutes: 20), (Timer timer) {});
+          new Timer.periodic(const Duration(minutes: 20), (Timer timer) {});
           expect(async.periodicTimerCount, 2);
-          async.elapse(new Duration(minutes: 20));
+          async.elapse(const Duration(minutes: 20));
           expect(async.periodicTimerCount, 2);
           timer.cancel();
           expect(async.periodicTimerCount, 1);
@@ -586,11 +590,11 @@ main() {
       test('it should report the number of pending non periodic timers', () {
         new FakeAsync().run((async) {
           expect(async.nonPeriodicTimerCount, 0);
-          Timer timer = new Timer(new Duration(minutes: 30), () {});
+          Timer timer = new Timer(const Duration(minutes: 30), () {});
           expect(async.nonPeriodicTimerCount, 1);
-          new Timer(new Duration(minutes: 20), () {});
+          new Timer(const Duration(minutes: 20), () {});
           expect(async.nonPeriodicTimerCount, 2);
-          async.elapse(new Duration(minutes: 25));
+          async.elapse(const Duration(minutes: 25));
           expect(async.nonPeriodicTimerCount, 1);
           timer.cancel();
           expect(async.nonPeriodicTimerCount, 0);
