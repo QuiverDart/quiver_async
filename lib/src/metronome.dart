@@ -73,12 +73,14 @@ class Metronome extends Stream<DateTime> {
         this._intervalMs = interval.inMilliseconds,
         this._anchorMs =
             (anchor == null ? clock.now() : anchor).millisecondsSinceEpoch {
-    _controller =
-        new StreamController<DateTime>.broadcast(sync: true, onCancel: () {
-      _timer.cancel();
-    }, onListen: () {
-      _startTimer(clock.now());
-    });
+    _controller = new StreamController<DateTime>.broadcast(
+        sync: true,
+        onCancel: () {
+          _timer.cancel();
+        },
+        onListen: () {
+          _startTimer(clock.now());
+        });
   }
 
   StreamSubscription<DateTime> listen(void onData(DateTime event),
